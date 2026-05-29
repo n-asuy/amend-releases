@@ -11,8 +11,8 @@ curl -fsSL https://raw.githubusercontent.com/n-asuy/amend-releases/main/install.
 amend auth login
 ```
 
-Pin a specific version with `AMENDFS_VERSION=v0.1.0`. Force a non-default
-install directory with `AMENDFS_BIN_DIR=$HOME/bin`.
+Pin a specific version with `AMEND_VERSION=v0.1.0`. Force a non-default
+install directory with `AMEND_BIN_DIR=$HOME/bin`.
 
 ## What lives here
 
