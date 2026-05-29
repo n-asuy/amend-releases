@@ -15,7 +15,7 @@ set -euo pipefail
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-RELEASE_REPO="${AMENDFS_RELEASE_REPO:-n-asuy/amend-releases}"
+RELEASE_REPO="${AMEND_RELEASE_REPO:-n-asuy/amend-releases}"
 BIN_NAME="amend"
 PROJECT_LABEL="AmendFS CLI"
 
@@ -86,8 +86,8 @@ latest_tag() {
 }
 
 resolve_tag() {
-  if [ -n "${AMENDFS_VERSION:-}" ]; then
-    TAG="$AMENDFS_VERSION"
+  if [ -n "${AMEND_VERSION:-}" ]; then
+    TAG="$AMEND_VERSION"
     case "$TAG" in v*) ;; *) TAG="v$TAG" ;; esac
   else
     TAG="$(latest_tag)"
@@ -162,13 +162,13 @@ extract_binary() {
 
 place_binary() {
   # Try, in order:
-  #   1. $AMENDFS_BIN_DIR if set.
+  #   1. $AMEND_BIN_DIR if set.
   #   2. /usr/local/bin if writable directly.
   #   3. /usr/local/bin via sudo, if sudo is available and on a tty.
   #   4. $HOME/.local/bin (and patch shell rc files).
   local candidate
-  if [ -n "${AMENDFS_BIN_DIR:-}" ]; then
-    candidate="$AMENDFS_BIN_DIR"
+  if [ -n "${AMEND_BIN_DIR:-}" ]; then
+    candidate="$AMEND_BIN_DIR"
     mkdir -p "$candidate"
     install_to "$candidate" || fail "Cannot install to $candidate."
     return
